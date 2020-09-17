@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+       
+    <link href="style.css" rel="stylesheet" type="text/css">   
+    
+       
+    <title>supercell 클래시로얄에 오신것을 환영합니다</title>
+    <style>
+        
+        
+    </style>
+    
+    <script>
+    $(function(){
+        
+        //탑버튼 숨기기
+        $('footer a').hide();
+        
+        
+       //비주얼에 타이틀, 자동차 이미지 보이게
+        var title=$('#visual img:first-child');
+        var car=$('#visual img:last-child');
+        
+        car.animate({'left':'20%','opacity':'1'},500);
+title.delay(500).animate({'right':'20%','opacity':'1'},500);
+        
+        
+        
+        //메뉴 클릭시 해당하는 컨텐츠를 상단 top 58 픽셀 위치에 올라오도록 하기
+        $('.gnb>li').on({'click focus':function(){
+            var num=$(this).index()+1; //비쥬얼 이미지 제외하고
+            console.log(num);
+        
+            //각 콘텐츠 article에 top위치값을 변수에 저장
+            var con=$('section article').eq(num).offset().top;
+            
+            //콘텐츠 빼기 58픽셀 만큼 위로 올린다
+            $('html, body').animate({scrollTop:con-35},500);
+             return false;
+        }
+                        
+        });
+        
+        $(window).scroll(function(){
+            var spos=$(window).scrollTop();
+            
+            $('.status').text(spos);  //세로스크롤값 표시하기
+            
+            if(spos>=1400){
+                $('footer a').slideDown();  //탑버튼나타내기
+            }else{
+                $('footer a').slideUp();  //탑버튼숨기기
+            }
+            
+            
+            
+            //내가쓴거
+            
+            //콘텐츠1,2 애니메이션
+            var txt01=$('.cont01_top>img:first-child');
+            var img01=$('.cont01_bottom>img');
+            var img02=$('.cont01_top>img:last-child');
+            var img02_1=$('.img_top>img:nth-child(1)');
+            var img02_2=$('.img_top>img:nth-child(2)');
+            var img02_3=$('.img_top>img:nth-child(3)');
+            var img02_4=$('.img_bottom>img:nth-child(1)');
+            var img02_5=$('.img_bottom>img:nth-child(2)');
+            var img02_6=$('.img_bottom>img:nth-child(3)');
+            var txt02=$('.cont02_bottom>img');
+            
+            if(spos>=320){
+                txt01.animate({'left':'320px'},500);
+            }
+            
+            if(spos>=320){
+                img01.delay(500).animate({'left':'360px'},500)
+            }
+            
+            if(spos>=320){
+                img02.delay(1000).fadeIn();
+            }
+            
+            if(spos>=1264){
+                img02_1.delay(300).fadeIn(1000);
+            }
+            
+            if(spos>=1264){
+                img02_2.delay(500).fadeIn(1000);
+            }
+            
+            if(spos>=1264){
+                img02_3.delay(700).fadeIn(1000);
+            }
+            
+            if(spos>=1264){
+                img02_4.delay(900).fadeIn(1000);
+            }
+            
+            if(spos>=1264){
+                img02_5.delay(1100).fadeIn(1000);
+            }
+            
+            if(spos>=1264){
+                img02_6.delay(1300).fadeIn(1000);
+            }
+            
+            if(spos>=1264){
+                txt02.delay(1700).fadeIn(500);
+            }
+            
+            
+            
+            
+            if(spos>=58){  //스크롤높이 58픽셀 이상이면
+                $('nav').addClass('act'); //내비게이션 서식 추가하여 고정시키고
+                }else{ //화면을 위로 올리면 내비게이션 서식 제자리로
+                    $('nav').removeClass('act');
+                }
+            
+            //해당콘텐츠가 상단으로 올라오면 해당메뉴에 서식적용하기
+            //방법1
+//            if(spos>=776&&spos<1500){
+//                $('.gnb a').removeClass('on');
+//                $('.gnb>li:first-child a').addClass('on');
+//            }else if(spos>=1546&&spos<2300){
+//                $('.gnb a').removeClass('on');
+//                $('.gnb>li:nth-child(2) a').addClass('on');
+//            }else if(spos>=2316&&spos<3000){
+//                $('.gnb a').removeClass('on');
+//                $('.gnb>li:nth-child(3) a').addClass('on');
+//            }else if(spos>=3086&&spos<3800){
+//                $('.gnb a').removeClass('on');
+//                $('.gnb>li:nth-child(4) a').addClass('on');
+//            }else if(spos>=3856&&spos<4600){
+//                $('.gnb a').removeClass('on');
+//                $('.gnb>li:nth-child(5) a').addClass('on');
+//            }else if(spos>=4626&&spos<5300){
+//                $('.gnb a').removeClass('on');
+//                $('.gnb>li:nth-child(6) a').addClass('on');
+//            }else if(spos>=5396){
+//                $('.gnb a').removeClass('on');
+//                $('.gnb>li:last-child a').addClass('on');
+//            }else{
+//                $('.gnb a').removeClass('on');
+//            }
+            
+            var h=$('section article').height();
+            //콘텐츠별 높이값을 구하여 변수에 저장한다.
+            //방법2
+            if(spos>=760&&spos<1319){
+                $('.gnb a').removeClass('on');
+                $('.gnb>li').eq(0).find('a').addClass('on');
+            }else if(spos>=1319&&spos<2046){
+                $('.gnb a').removeClass('on');
+                $('.gnb>li').eq(1).find('a').addClass('on');
+            }else if(spos>=2046&&spos<2761){
+                $('.gnb a').removeClass('on');
+                $('.gnb>li').eq(2).find('a').addClass('on');
+            }else if(spos>=2761&&spos<3472){
+                $('.gnb a').removeClass('on');
+                $('.gnb>li').eq(3).find('a').addClass('on');
+            }else if(spos>=3472&&spos<4230){
+                $('.gnb a').removeClass('on');
+                $('.gnb>li').eq(4).find('a').addClass('on');
+            }else if(spos>=4230&&spos<4919){
+                $('.gnb a').removeClass('on');
+                $('.gnb>li').eq(5).find('a').addClass('on');
+            }else if(spos>=4919){
+                $('.gnb a').removeClass('on');
+                $('.gnb>li').eq(6).find('a').addClass('on');
+            }else{
+                $('.gnb a').removeClass('on');
+            }
+            return false;
+            
+            });
+            
+            $('footer a').click(function(){
+            $('body,html').animate({'scrollTop':'0px'},400);
+                return false;
+            
+        });
+        
+    });
+    
+    </script>
+    
+</head>
+<body>
+<span class="status"></span>
+
+<!--  상단헤더영역 시작-->
+   <header>
+     
+      <h1><a href="index.html" title="메인페이지  바로가기"><img src="img/main_logo.png" alt="상단로고"></a></h1>
+      
+       <div id="header_top">   
+       </div>
+       <nav>
+           <ul class="gnb">
+               <li><a href="#" title="이벤트">이벤트</a></li>
+               <li><a href="#" title="덱만들기">덱만들기</a></li>
+               <li><a href="#" title="다운로드">다운로드</a></li>
+               <li><a href="#" title="캐릭터">캐릭터</a></li>
+               <li><a href="#" title="라운지">라운지</a></li>
+               <li><a href="#" title="시합정보">시합정보</a></li>
+               <li><a href="#" title="문의하기">문의하기</a></li>
+           </ul>
+       </nav>
+   </header>
+    
+<!--    콘텐츠영역 시작-->
+   <section id="cont">
+       <article id="visual">
+       <video autoplay loop muted>
+       <source src="video/main_vedio.mp4" type="video/mp4">
+       </video>
+<!--
+           <img src="img/txt_visual1.png" alt="타이틀이미지">
+           <img src="img/visual.png" alt="자동차이미지">
+-->
+       </article>
+<!--       콘텐츠1 이벤트-->
+       <article class="sub_con" id="cont01">
+           <div class="cont01_top">
+               <img src="img/cont01_txt.png" alt="">
+               <img src="img/cont01_logo.png">
+           </div>
+           
+           <div class="cont01_bottom">
+               <img src="img/cont01_img.png" alt="">
+               <input type="button" value="자세히보기">
+           </div>   
+       </article>
+       
+<!--       콘텐츠2 덱-->
+       <article class="sub_con" id="cont02">
+          <div class="cont02_top">
+              <p class="img_top">
+                  <img src="img/cont02_1.png" alt="">
+                  <img src="img/cont02_2.png" alt="">
+                  <img src="img/cont02_3.png" alt="">
+              </p>
+              <p class="img_bottom">
+                  <img src="img/cont02_4.png" alt="">
+                  <img src="img/cont02_5.png" alt="">
+                  <img src="img/cont02_6.png" alt="">
+              </p>
+          </div>
+          
+          <div class="cont02_bottom">
+              <img src="img/cont02_txt.png" alt="">
+          </div> 
+       </article>
+       
+<!--       콘텐츠3 게임 다운로드-->
+       <article class="sub_con" id="cont03">
+           <img src="img/cont03_mookup.png" alt="">
+           <img src="img/cont03_btn01.png" alt="">
+           <img src="img/cont03_btn02.png" alt="">
+       </article>
+       
+<!--       콘텐츠4 캐릭터-->
+       <article class="sub_con" id="cont04">
+           <img src="img/cont04_bg.png" alt="">
+           
+           
+       </article>
+       
+<!--       콘텐츠5 라운지-->
+       <article class="sub_con" id="cont05">
+           <img src="img/cont05_bg.png" alt="">
+           <img src="img/cont05.txt.png" alt="">
+           
+           <div class="cont05_line">
+               <p>서울시 강남구 강남대로 586 WeWork신사 5F / 6F</p>
+           </div>
+           
+           <div class="bus_wrap">
+               <img src="img/cont05_bus_icon.png" alt="">
+               <p>버스 이용시</p>
+               <p>신사역 푸른저축은행(22-015) 정류장</p>
+           </div>
+           
+           <div class="subway_wrap">
+               <img src="img/cont05_subway_icon.png" alt="">
+               <p>지하철 이용시</p>
+               <p>지하철 3호선 신사역 3번출구</p>
+           </div>
+           
+           <p class="cont05_txt">일반문의 &#124; CONTACT@SUPERCELLLOUNGE.COM<br><br>
+           비즈니스 문의 &#124; BUSINESS@SUPERCELLLOUNGE.COM</p>
+       </article>
+       
+       <article class="sub_con" id="cont06">
+           <input type="button" value="일정 보러가기">
+       </article>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       <article class="sub_con" id="about_us">
+           <img src="img/cont07_background.png" alt="">
+           <div class="about_info">
+               <div class="about_people">
+                   <img src="img/imoji.png" alt="">
+               </div>
+               <p class="about_name">성명&nbsp;&nbsp; 손 호 진</p>
+               <p>신입 웹퍼블리셔 ( 25age )</p>
+           </div>
+           
+<!--              폼서식 시작-->
+               <form name="contact" method="post" action="contact_me1.php">
+        <fieldset>
+<!--           1.제목-->
+            <legend>CONTACT US</legend>
+            <div class="subject">
+                <label for="subject"></label>
+                <input type="text" name="subject" id="subject" placeholder="Subject">
+            </div>
+            
+<!--            2.이름-->
+            <div class="yourname">
+                <label for="name"></label>
+                <input type="text" name="name" id="name" placeholder="Your Name">
+            </div>
+            
+<!--            3. 이메일-->
+            <div class="youremail">
+                <label for="email"></label>
+                <input type="email" placeholder="Your Email Adress" name="email" id="email">
+            </div>            
+            
+            
+<!--            4.내용-->
+            <div class="field">
+                <label for="message"></label>
+                <textarea name="message" id="message" placeholder="Leave a Message" rows="4">
+                </textarea>
+            </div>     
+            
+<!--            5.보내기-->
+            <ul>
+                <li><input type="submit" value="SEND"></li>
+            </ul>                       
+            
+        </fieldset>
+        
+    </form>
+           
+           
+       </article>
+   </section>
+    
+<!--    푸터영역 시작-->
+<footer>
+    <a href="#" title="맨 위로 바로가기"><img src="img/top_btn.png"></a>
+    <address>Copyright &copy; 2020 SUPERCELL CLASHROYAL allrights reserved.</address>
+
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
